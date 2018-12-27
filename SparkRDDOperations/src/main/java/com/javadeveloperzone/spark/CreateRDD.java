@@ -1,4 +1,4 @@
-package com.javadeveloperzone.spark.rdd;
+package com.javadeveloperzone.spark;
 
 import java.util.Arrays;
 import java.util.Iterator;
