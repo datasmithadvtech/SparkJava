@@ -35,8 +35,18 @@ public class FunctionExample {
 
         JavaRDD<String> guestsRDD =  sparkContext.textFile(args[0]);
 
+        JavaRDD<String> adultMinorRDD = guestsRDD.map(new Function<String,String>(){
+            @Override
+            public String call(String input){
+
+                int age = Integer.parseInt(input.split(",")[2]);
+                return ( age >= 18 ? "Adult" : "Minor");
+            }
+        });
+
         /*Java Function Passing with named class.*/
-        JavaRDD<String> adultMinorRDD = guestsRDD.map(new AdultMinorSeparator());
+    //        JavaRDD<String> adultMinorRDD = guestsRDD.map(new AdultMinorSeparator());
+
 
         /*Java function passing with anonymous inner class*/
         JavaPairRDD<String,Integer> pairedRDD= adultMinorRDD.mapToPair(new PairFunction<String, String, Integer>() {
