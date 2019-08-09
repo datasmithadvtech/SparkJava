@@ -6,7 +6,7 @@
 
 [Spark Word Count Example](https://javadeveloperzone.com/spark/spark-wordcount-example/)
 
-Spark Transformations
+[Spark Transformations](https://javadeveloperzone.com/spark/spark-transformations/)
 
 Spark Actions
 
