@@ -2,12 +2,16 @@ package com.javadeveloperzone.spark;
 
 import org.apache.spark.SparkConf;
 import org.apache.spark.SparkContext;
+import org.apache.spark.api.java.JavaPairRDD;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
 import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
+import scala.Tuple2;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 public class UnionExample {
 
@@ -43,6 +47,43 @@ public class UnionExample {
 
 //        learningSkills::[Spark, Scala, Elastic Search, Spring Boot]
         System.out.print("learningSkills::"+learningSkills.collect().toString());
+
+        List<String> learning4Skills =  learningSkills.take(4);
+
+//        Learning 4 Skills::[Spark, Scala, Elastic Search, Spring Boot]
+        System.out.println("Learning 4 Skills::"+learning4Skills.toString());
+
+        List<String> learningTop2Skills =  learningSkills.top(2);
+
+//        Learning top 2 Skills::[Spring Boot, Spark]
+        System.out.println("Learning top 2 Skills::"+learningTop2Skills.toString());
+
+        Map<String,Long> skillCountMap= learningSkills.countByValue();
+
+        for(Map.Entry<String,Long> entry: skillCountMap.entrySet()){
+            System.out.println("key::"+entry.getKey()+"\t"+"value:"+entry.getValue());
+        }
+
+        Tuple2<String,Integer> javaTestSection1 = new Tuple2<String,Integer>("Java",45);
+        Tuple2<String,Integer> javaTestSection2 = new Tuple2<String,Integer>("Java",40);
+        Tuple2<String,Integer> sparkTestSection1 = new Tuple2<String,Integer>("Spark",46);
+        Tuple2<String,Integer> sparkTestSection2 = new Tuple2<String,Integer>("Spark",42);
+
+        List<Tuple2<String,Integer>> testsList = new ArrayList<Tuple2<String, Integer>>();
+        testsList.add(javaTestSection1);
+        testsList.add(javaTestSection2);
+        testsList.add(sparkTestSection1);
+        testsList.add(sparkTestSection2);
+
+        JavaPairRDD<String,Integer> examMarks = javaSparkContext.parallelizePairs(testsList);
+
+
+
+
+        learningTop2Skills.forEach(element -> System.out.println("e:"+element));
+
+
+
 
 
 
