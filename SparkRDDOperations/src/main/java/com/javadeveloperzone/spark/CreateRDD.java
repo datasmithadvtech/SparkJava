@@ -75,6 +75,7 @@ public class CreateRDD {
 	    /*Second way to create RDD is, Parallelizing a collection in driver program.
 	      *We can simply call SparkContext's parallelize() method to create RDD. */
 		JavaRDD<String> likes = sparkContext.parallelize(Arrays.asList("spark","I like spark"));
+
 		likes.saveAsTextFile(args[2]);
 
 

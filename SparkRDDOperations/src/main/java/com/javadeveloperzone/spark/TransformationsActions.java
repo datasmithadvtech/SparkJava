@@ -83,7 +83,7 @@ public class TransformationsActions {
 
         learningTop2Skills.forEach(element -> System.out.println("e:"+element));
 
-
+        learningSkills.foreach(element -> System.out.println(element));
 
 
 
