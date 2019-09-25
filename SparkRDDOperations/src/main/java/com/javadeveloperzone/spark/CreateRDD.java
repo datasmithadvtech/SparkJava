@@ -76,8 +76,7 @@ public class CreateRDD {
 	      *We can simply call SparkContext's parallelize() method to create RDD. */
 		JavaRDD<String> likes = sparkContext.parallelize(Arrays.asList("spark","I like spark"));
 		likes.saveAsTextFile(args[2]);
-		
-		sparkContext.stop();
-		sparkContext.close();
+
+
 	}
 }

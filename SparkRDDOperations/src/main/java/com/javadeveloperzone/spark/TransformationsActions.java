@@ -13,7 +13,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-public class UnionExample {
+import static javafx.scene.input.KeyCode.V;
+
+public class TransformationsActions {
 
     private static List<String> ArrayList;
 
@@ -23,7 +25,7 @@ public class UnionExample {
 
         sparkConf.setMaster("local[1]");
 
-        sparkConf.setAppName("Union Example");
+        sparkConf.setAppName("Transformations And Actions Spark Example");
 
         JavaSparkContext javaSparkContext = new JavaSparkContext(sparkConf);
 
@@ -76,8 +78,7 @@ public class UnionExample {
         testsList.add(sparkTestSection2);
 
         JavaPairRDD<String,Integer> examMarks = javaSparkContext.parallelizePairs(testsList);
-
-
+        examMarks.foreach(tuple-> System.out.println("key:"+tuple._1+"\t value:" +tuple._2));
 
 
         learningTop2Skills.forEach(element -> System.out.println("e:"+element));
