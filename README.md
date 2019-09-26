@@ -8,7 +8,7 @@
 
 [Spark Transformations](https://javadeveloperzone.com/spark/spark-transformations/)
 
-Spark Actions
+[Spark Actions](https://javadeveloperzone.com/spark/spark-actions/)
 
 [Spark RDD Example – Creating RDD using Java](https://javadeveloperzone.com/spark/spark-rdd-example/)
 
